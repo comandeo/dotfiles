@@ -1,0 +1,19 @@
+[alias]
+	st = status
+	co = checkout
+	lg = log --graph --pretty=format:'%Cred%h%Creset %s%C(yellow)%d%Creset (%Cgreen%an%Creset, %cr)' --abbrev-commit --date=relative
+	ci = commit
+[user]
+	name = Dmitry Rybakov
+	email = dmitry.rybakov@xing.com
+[core]
+	excludesfile = /Users/dmitry.rybakov/.gitignore_global
+	editor = mvim -v
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[push]
+	default = simple

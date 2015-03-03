@@ -1,0 +1,8 @@
+.idea/
+*.swp
+*.swo
+.DS_Store
+*.iml
+nb-configuration.xml
+target/
+tags
