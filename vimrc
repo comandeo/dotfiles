@@ -12,6 +12,7 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'scrooloose/nerdtree'
 Plugin 'bling/vim-airline'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'croaky/vim-colors-github'
 Plugin 'tpope/vim-fugitive'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'mileszs/ack.vim'
@@ -25,15 +26,23 @@ filetype plugin indent on    " required
 
 syntax on
 set t_Co=256
+set vb t_vb=
 "set cursorline
 set number
 set numberwidth=3
-set mouse=a
+"" setup mouse
+set mouse+=a
+if &term =~ '^screen'
+    " tmux knows the extended mouse mode
+    set ttymouse=xterm2
+endif
+" Indentation
 set smartindent
 set tabstop=4
 set shiftwidth=4
 set expandtab
 set shiftround
+" Misc
 set clipboard=unnamed
 set shell=/bin/sh
 set laststatus=2
@@ -43,6 +52,35 @@ nnoremap <Leader>\ :call NERDComment(0,"toggle")<cr>
 nnoremap <Leader>b :CtrlPBuffer<cr>
 nnoremap <Leader>t :CtrlPTag<cr>
 nnoremap <Leader>f :NERDTreeFind<cr>
+
+augroup vimrcEx
+  autocmd!
+
+  " When editing a file, always jump to the last known cursor position.
+  " Don't do it for commit messages, when the position is invalid, or when
+  " inside an event handler (happens when dropping a file on gvim).
+  autocmd BufReadPost *
+    \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal g`\"" |
+    \ endif
+
+  " Set syntax highlighting for specific file types
+  autocmd BufRead,BufNewFile Appraisals set filetype=ruby
+  autocmd BufRead,BufNewFile *.md set filetype=markdown
+
+  " Enable spellchecking for Markdown
+  autocmd FileType markdown setlocal spell
+
+  " Automatically wrap at 80 characters for Markdown
+  autocmd BufRead,BufNewFile *.md setlocal textwidth=80
+
+  " Automatically wrap at 72 characters and spell check git commit messages
+  autocmd FileType gitcommit setlocal textwidth=72
+  autocmd FileType gitcommit setlocal spell
+
+  " Allow stylesheets to autocomplete hyphenated words
+  autocmd FileType css,scss,sass setlocal iskeyword+=-
+augroup END
 
 " Tab completion
 " will insert tab at beginning of line,
@@ -97,6 +135,7 @@ else
   let g:solarized_visibility = "normal"
   let g:solarized_contrast = "high"
   colorscheme solarized
+  "colorscheme github
 endif
 
 set wildignore=public/**,*.html
