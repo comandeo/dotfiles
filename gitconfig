@@ -5,9 +5,9 @@
 	ci = commit
 [user]
 	name = Dmitry Rybakov
-	email = dmitry.rybakov@xing.com
+	email = dmitry.rybakov@gmail.com
 [core]
-	excludesfile = /Users/dmitry.rybakov/.gitignore_global
+	excludesfile = ~/.gitignore_global
 	editor = mvim -v
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
