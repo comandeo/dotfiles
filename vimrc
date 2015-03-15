@@ -20,6 +20,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'Rails.vim'
 Plugin 'vim-scripts/ctags.vim'
 Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'fatih/vim-go'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -31,11 +32,7 @@ set vb t_vb=
 set number
 set numberwidth=3
 "" setup mouse
-set mouse+=a
-if &term =~ '^screen'
-    " tmux knows the extended mouse mode
-    set ttymouse=xterm2
-endif
+set mouse=a
 " Indentation
 set smartindent
 set tabstop=4
@@ -46,6 +43,7 @@ set shiftround
 set clipboard=unnamed
 set shell=/bin/sh
 set laststatus=2
+set hlsearch
 
 nnoremap <C-e> :NERDTreeToggle<cr>
 nnoremap <Leader>\ :call NERDComment(0,"toggle")<cr>
