@@ -96,8 +96,7 @@ inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <S-Tab> <c-n>
 
 " Make it obvious where 80 characters is
-set textwidth=80
-set colorcolumn=+1
+set colorcolumn=81
 
 " Numbers
 set number
@@ -172,6 +171,8 @@ au BufRead,BufNewFile *.jpbuilder set filetype=ruby
 " c/c++
 set cinoptions=:0,t0,+4,(4
 autocmd BufNewFile,BufRead *.[ch] setlocal sw=0 ts=8 noet)
+
+" local settings
 if filereadable('.localvim')
   so .localvim
 endif
