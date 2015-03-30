@@ -20,6 +20,7 @@ export PATH="$PATH:/Users/dmitry.rybakov/.rvm/gems/ruby-2.1.2/bin:/Users/dmitry.
 #ssh-agent
 alias git='(ssh-add -l > /dev/null) || ssh-add -t 1800 && git'
 alias ssh='(ssh-add -l > /dev/null) || ssh-add -t 1800 && ssh'
+alias rubostage='git diff --name-only --cached | grep '\.rb' | xargs rubocop -a'
 # RVM stuff
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 #
