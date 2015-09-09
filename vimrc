@@ -12,7 +12,6 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'scrooloose/nerdtree'
 Plugin 'bling/vim-airline'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'croaky/vim-colors-github'
 Plugin 'tpope/vim-fugitive'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'mileszs/ack.vim'
@@ -20,7 +19,6 @@ Plugin 'scrooloose/syntastic'
 Plugin 'Rails.vim'
 Plugin 'vim-scripts/ctags.vim'
 Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'fatih/vim-go'
 Plugin 'slim-template/vim-slim.git'
 
 call vundle#end()            " required
@@ -130,12 +128,11 @@ if has('gui_running')
   set gfn=Monaco:h10
 else
   set background=light
-  let g:solarized_termcolors = 16
+  let g:solarized_termcolors = 256
   let g:solarized_termtrans = 1
   let g:solarized_visibility = "normal"
   let g:solarized_contrast = "high"
   colorscheme solarized
-  "colorscheme github
 endif
 
 set wildignore=public/**,*.html
