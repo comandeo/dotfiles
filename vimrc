@@ -11,15 +11,12 @@ Plugin 'tpope/vim-endwise'
 Plugin 'Raimondi/delimitMate'
 Plugin 'scrooloose/nerdtree'
 Plugin 'bling/vim-airline'
-Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-fugitive'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'mileszs/ack.vim'
 Plugin 'scrooloose/syntastic'
-Plugin 'Rails.vim'
 Plugin 'vim-scripts/ctags.vim'
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'slim-template/vim-slim.git'
+Plugin 'altercation/vim-colors-solarized'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -126,13 +123,6 @@ if has('gui_running')
   set guioptions-=r
   set guioptions-=R
   set gfn=Monaco:h10
-else
-  set background=light
-  let g:solarized_termcolors = 256
-  let g:solarized_termtrans = 1
-  let g:solarized_visibility = "normal"
-  let g:solarized_contrast = "high"
-  colorscheme solarized
 endif
 
 set wildignore=public/**,*.html
