@@ -5,9 +5,21 @@
 	ci = commit
 [user]
 	name = Dmitry Rybakov
-	email = dmitry.rybakov@gmail.com
+	email = dmitry.rybakov@moovel.com
 [core]
-	excludesfile = ~/.gitignore_global
+	excludesfile = /Users/mitja/.gitignore_global
 	editor = mvim -v
 [push]
 	default = simple
+[diff]
+	compactionHeuristic = 1
+[merge]
+	tool = diffmerge
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[http]
+	sslVerify = false

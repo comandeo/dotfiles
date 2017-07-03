@@ -17,6 +17,8 @@ Plugin 'mileszs/ack.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'vim-scripts/ctags.vim'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'keith/swift.vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -122,7 +124,7 @@ if has('gui_running')
   set guioptions-=L
   set guioptions-=r
   set guioptions-=R
-  set gfn=Monaco:h10
+  set gfn=SF\ Mono\ Regular:h12
 endif
 
 set wildignore=public/**,*.html
@@ -149,7 +151,7 @@ endif
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " Display extra whitespace
-set list listchars=tab:»·,trail:·,nbsp:·
+"set list listchars=tab:»·,trail:·,nbsp:·
 
 "ruby
 autocmd FileType ruby,eruby setlocal sw=2 ts=2
@@ -159,8 +161,14 @@ au BufRead,BufNewFile *.jbuilder set filetype=ruby
 au BufRead,BufNewFile *.jpbuilder set filetype=ruby
 
 " c/c++
-set cinoptions=:0,t0,+4,(4
-autocmd BufNewFile,BufRead *.[ch] setlocal sw=0 ts=8 noet)
+set cinoptions=:0,t0,+4,(4,N-s,L0,g0
+autocmd BufNewFile,BufRead *.[ch] setlocal sw=0 ts=4 noet
+let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+
+" iOS stuff
+au BufRead,BufNewFile Podfile set filetype=ruby
+au BufRead,BufNewFile *.podspec set filetype=ruby
 
 " local settings
 if filereadable('.localvim')
