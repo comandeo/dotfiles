@@ -1,0 +1,22 @@
+[alias]
+	st = status
+	co = checkout
+	lg = log --graph --pretty=format:'%Cred%h%Creset %s%C(yellow)%d%Creset (%Cgreen%an%Creset, %cr)' --abbrev-commit --date=relative
+	ci = commit
+[user]
+	name = Dmitry Rybakov
+	email = dmitry.rybakov@mongodb.com
+	signingkey = C72D109332E2DA44
+[commit]
+	gpgsign = true
+[push]
+	default = current
+[core]
+    editor = nvim
+    excludesfile = /home/drybakov/.gitignore_global
+[pull]
+	ff = only
+[init]
+	defaultBranch = main
+[merge]
+	tool = meld
