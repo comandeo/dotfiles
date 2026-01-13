@@ -71,7 +71,7 @@
   (exec-path-from-shell-initialize))
 
 (scroll-bar-mode -1)
-(fido-mode 1)
+(fido-vertical-mode 1)
 
 (with-eval-after-load 'eglot
   (add-to-list 'eglot-server-programs
@@ -97,6 +97,12 @@
 
 (add-hook 'text-mode-hook 'flyspell-mode)
 (add-hook 'prog-mode-hook 'flyspell-prog-mode)
+
+(set-face-attribute 'default nil
+                    :family "CaskaydiaMono Nerd Font"
+                    :weight 'light
+                    :height 120)
+
 
 ;; Custom variables в отдельный файл
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
