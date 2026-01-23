@@ -5,8 +5,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(company exec-path-from-shell focus fzf gruvbox-theme markdown-mode
-             olivetti super-save wc-goal-mode)))
+   '(ai-code company eat exec-path-from-shell focus fzf gruvbox-theme
+             markdown-mode multiple-cursors olivetti ripgrep
+             super-save treesit-auto treesit-fold vterm wc-goal-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

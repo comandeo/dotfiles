@@ -25,6 +25,10 @@
 ;; (global-whitespace-mode t)
 (add-hook 'prog-mode-hook 'whitespace-mode)
 
+;; Remove trailing whitespace on save in prog-mode
+(add-hook 'prog-mode-hook
+          (lambda () (add-hook 'before-save-hook 'delete-trailing-whitespace nil t)))
+
 
 (setq select-enable-clipboard t
       select-enable-primary t)
@@ -51,6 +55,33 @@
 (setq vterm-timer-delay nil)
 (require 'company)
 (global-company-mode 1)
+
+;; GitHub Copilot configuration
+(use-package copilot
+  :vc (:url "https://github.com/copilot-emacs/copilot.el"
+            :rev :newest
+            :branch "main")
+  :ensure t
+  :hook (prog-mode . copilot-mode)
+  :bind (:map copilot-completion-map
+              ("<tab>" . copilot-accept-completion)
+              ("TAB" . copilot-accept-completion)
+              ("C-<tab>" . copilot-accept-completion-by-word)
+              ("C-TAB" . copilot-accept-completion-by-word)
+              ("C-n" . copilot-next-completion)
+              ("C-p" . copilot-previous-completion))
+  :config
+  ;; Set idle delay to reduce interference with company-mode
+  (setq copilot-idle-delay 0.1)
+  ;; Adjust indentation settings
+  (add-to-list 'copilot-indentation-alist '(prog-mode 4))
+  (add-to-list 'copilot-indentation-alist '(emacs-lisp-mode 2))
+  (add-to-list 'copilot-indentation-alist '(text-mode 2)))
+
+;; Optional: Install company-box for better visual integration
+;; (use-package company-box
+;;   :ensure t
+;;   :hook (company-mode . company-box-mode))
 
 (setq-default tab-width 4)
 (setq-default c-basic-offset 4)
@@ -81,7 +112,7 @@
 (setq project-kill-buffers-when-switching t)
 
 ;; Remapping I-search to Ctrl-f
-(global-set-key (kbd "C-f") 'isearch-forward)
+;; (global-set-key (kbd "C-f") 'isearch-forward)
 
 (use-package markdown-mode
   :ensure t
@@ -101,8 +132,21 @@
 (set-face-attribute 'default nil
                     :family "CaskaydiaMono Nerd Font"
                     :weight 'light
-                    :height 120)
+                    :height 140
+                    0)
 
+(global-set-key (kbd "C-s-c C-s-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
+(global-set-key [home] 'move-beginning-of-line)
+(global-set-key [end] 'move-end-of-line)
+
+(use-package treesit-auto
+  :ensure t
+  :config
+  (global-treesit-auto-mode))
 
 ;; Custom variables в отдельный файл
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
